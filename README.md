@@ -8,13 +8,9 @@ Infusionsoft's API is business critical and being a control freak I wanted to ta
 
 Install Instructions
 ==================
-Add the following entry to the array of service providers found in app/config/app.php:
+Install the package using composer (by adding the require entry into your app's composer.json file) and add the following entry to the array of service providers found in app/config/app.php:
 
 `'Spoolphiz\Infusionsoft\InfusionsoftServiceProvider'`
-
-Optionally you can add the following entry to the class alias array in the same config file:
-
-`'Infusionsoft' => 'Spoolphiz\Infusionsoft\Infusionsoft'`
 
 Usage
 ==================
