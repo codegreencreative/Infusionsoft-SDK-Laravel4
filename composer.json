@@ -1,9 +1,21 @@
 {
-    "name": "infusionsoft/PHP-iSDK",
+    "name": "spoolphiz/infusionsoft",
+	"description": "A port of Infusionsoft's PHP SDK to composer package for Laravel 4",
+	"authors": [
+	        {
+	            "name": "Alexander Manea",
+	            "email": "alexander.manea@gmail.com"
+	        }
+	],
     "require": {
-        "php": ">=5.2.0"
+        "php": ">=5.3.0",
+		"illuminate/support": "4.0.x"
     },
-    "autoload": {
-        "files": ["src/isdk.php"]
-    }
+	"autoload": {
+		
+		"psr-0": {
+		            "Spoolphiz\\Infusionsoft": "src/"
+		}
+    },
+	"minimum-stability": "dev"
 }
