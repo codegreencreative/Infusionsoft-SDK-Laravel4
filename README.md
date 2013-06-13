@@ -8,4 +8,27 @@ Infusionsoft's API is business critical and being a control freak I wanted to ta
 
 Install Instructions
 ==================
-Coming soon.
+Add the following entry to the array of service providers found in app/config/app.php:
+
+`'Spoolphiz\Infusionsoft\InfusionsoftServiceProvider'`
+
+Optionally you can add the following entry to the class alias array in the same config file:
+
+`'Infusionsoft' => 'Spoolphiz\Infusionsoft\Infusionsoft'`
+
+Usage
+==================
+Add the following to your app/routes.php and visit http://www.yourdomain.com/infusionsoft-test
+
+```php
+Route::get('/infusionsoft-test', function()
+{
+	$ifs = new Spoolphiz\Infusionsoft\Infusionsoft('ls');
+	$contactId = 123456;
+	$result = $ifs->loadCon($contactId, array('FirstName','LastName','Email'));
+	
+	dd($result);
+});
+```
+
+The `Spoolphiz\Infusionsoft\Infusionsoft` class extends Infusionsoft's iSDK class so you can run any API method against it. 
