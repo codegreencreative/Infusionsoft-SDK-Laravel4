@@ -8,7 +8,7 @@ Infusionsoft's API is business critical and being a control freak I wanted to ta
 
 Install Instructions
 ==================
-Install the package using composer (by adding the require entry into your app's composer.json file) and add the following entry to the array of service providers found in app/config/app.php:
+Install the [package](https://packagist.org/packages/spoolphiz/infusionsoft) using composer and add the following entry to the array of service providers found in app/config/app.php:
 
 `'Spoolphiz\Infusionsoft\InfusionsoftServiceProvider'`
 
@@ -19,7 +19,7 @@ Add the following to your app/routes.php and visit http://www.yourdomain.com/inf
 ```php
 Route::get('/infusionsoft-test', function()
 {
-	$ifs = new Spoolphiz\Infusionsoft\Infusionsoft('ls');
+	$ifs = new Spoolphiz\Infusionsoft\Infusionsoft('connectionName');
 	$contactId = 123456;
 	$result = $ifs->loadCon($contactId, array('FirstName','LastName','Email'));
 	
