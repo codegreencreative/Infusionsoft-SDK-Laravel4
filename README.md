@@ -35,7 +35,7 @@ Route::get('/infusionsoft-test', function()
 
 The second way is to instantiate the iSDK object then use Infusionsoft::execWithLog() to run the desired method:
 
-```
+```php
 Route::get('/infusionsoft-test', function()
 {	
 	$sdk = Infusionsoft::sdk();
