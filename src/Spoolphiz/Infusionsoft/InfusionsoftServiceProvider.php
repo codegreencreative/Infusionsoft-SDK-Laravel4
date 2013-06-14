@@ -2,6 +2,7 @@
 namespace Spoolphiz\Infusionsoft;
 
 use Illuminate\Support\ServiceProvider;
+use Spoolphiz\Infusionsoft\Infusionsoft;
 
 class InfusionsoftServiceProvider extends ServiceProvider {
 
@@ -35,17 +36,10 @@ class InfusionsoftServiceProvider extends ServiceProvider {
 		//$this->app['config']->package('spoolphiz/infusionsoft', __DIR__.'/../../../config', 'spoolphiz/infusionsoft');
 		
 		// Register 'infusionsoft' instance container to our Infusionsoft object
-        $this->app['infusionsoft'] = $this->app->share(function($app)
-        {
-            return new Spoolphiz\Infusionsoft\Infusionsoft;
-        });
-
-		// Shortcut so developers don't need to add an Alias in app/config/app.php
-        $this->app->booting(function()
-        {
-			$loader = \Illuminate\Foundation\AliasLoader::getInstance();
-			$loader->alias('Infusionsoft', 'Spoolphiz\Infusionsoft\Facades\Infusionsoft');
-        });
+		$this->app['infusionsoft'] = $this->app->share(function($app)
+		{
+			return new \Spoolphiz\Infusionsoft\Infusionsoft;
+		});
 	}
 
 	/**
@@ -55,7 +49,7 @@ class InfusionsoftServiceProvider extends ServiceProvider {
 	 */
 	public function provides()
 	{
-		return array();
+		return array('infusionsoft');
 	}
 
 }
