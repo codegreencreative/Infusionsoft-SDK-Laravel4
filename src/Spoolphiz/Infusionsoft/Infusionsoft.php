@@ -38,7 +38,7 @@ class Infusionsoft {
 	 *
 	 * @return array
 	 */
-	public static function execWithLog( $sdk, $method, $args, $log = false )
+	public static function execWithLog( $sdk, $method, $args, $log = true )
 	{
 		//TODO: implement logging functionality
 		//For now this function just calls requested iSDK method
@@ -46,17 +46,20 @@ class Infusionsoft {
 		//write code in such a way that will allow logging in the future 
 		//without requiring modification
 		
-		//$start = microtime(true);
+		$start = microtime(true);
 		$result = call_user_func_array(array($sdk, $method), $args);
-		//$end = microtime(true);
+		$end = microtime(true);
 		
-		/*$logData = array_merge( array(
-									'type' => $_SERVER['REQUEST_METHOD'],
-									'request' => $_SERVER['REQUEST_URI'],
-									)
-									, $args);
-		$name = "ifs.$method"
-		$execTime = $end - $start;*/
+		/*if( $log )
+		{
+			$logData = array_merge( array(
+										'type' => $_SERVER['REQUEST_METHOD'],
+										'request' => $_SERVER['REQUEST_URI'],
+										)
+										, $args);
+			$name = "ifs.$method"
+			$execTime = $end - $start;
+		}*/
 		
 		return $result;
 	}

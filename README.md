@@ -6,7 +6,7 @@ Motivation
 ==================
 Infusionsoft's API is business critical and being a control freak I wanted to take ownership over merging in future updates. I'll also be writing a db based logging system to track execution time on a per API call basis.
 
-Install Instructions
+Installation Instructions
 ==================
 Install the [package](https://packagist.org/packages/spoolphiz/infusionsoft) using composer and add the following entry to the array of service providers found in app/config/app.php:
 
@@ -15,6 +15,12 @@ Install the [package](https://packagist.org/packages/spoolphiz/infusionsoft) usi
 Also, add the facade alias to aliases array found in the same file:
 
 `'Infusionsoft'	  => 'Spoolphiz\Infusionsoft\Facades\Infusionsoft',`
+
+You'll also need to publish the config file to your app/config/ directory by running the following from command line in your project root:
+
+`php artisan config:publish spoolphiz/infusionsoft`
+
+This will copy the config file to app/config/packages/spoolphiz/infusionsoft/ where you can set up your Infusionsoft application name and API key.
 
 Usage
 ==================
@@ -46,4 +52,5 @@ Route::get('/infusionsoft-test', function()
 });
 ```
 
-Using this second method is beneficial if you plan to use the api transaction time logging feature (coming soon) without needing to modify your code. As of now Infusionsoft::execWithLog() just runs the requested method without any logging. 
+Using this second method is beneficial if you plan to use the API transaction time logging feature (coming soon) without needing to modify your code in the future. As of now Infusionsoft::execWithLog() just runs the requested method without any logging. 
+
