@@ -20,7 +20,7 @@ You'll also need to publish the config file to your app/config/ directory by run
 
 `php artisan config:publish spoolphiz/infusionsoft`
 
-This will copy the config file to app/config/packages/spoolphiz/infusionsoft/ where you can set up your Infusionsoft application name and API key.
+This will copy the config file to app/config/packages/spoolphiz/infusionsoft/ where you must set up your Infusionsoft application name and API key.
 
 Usage
 ==================

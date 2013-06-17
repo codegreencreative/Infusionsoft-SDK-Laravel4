@@ -47,7 +47,7 @@ class Infusionsoft {
 		//without requiring modification
 		
 		$start = microtime(true);
-		$result = call_user_func_array(array($sdk, $method), $args);
+		$result = static::wrap_call_user_func_array($sdk, $method, $args);
 		$end = microtime(true);
 		
 		/*if( $log )
@@ -63,4 +63,36 @@ class Infusionsoft {
 		
 		return $result;
 	}
+	
+
+	 /**
+	 * Faster way of achieving functionality of call_user_func_array(), with fall back in case
+	 * of too many params
+	 * 
+	 * @param $c	object - the object who's method we'll be calling
+	 * @param $m	string - the method to call
+	 * @param $p	array - array containing parameters to pass to specified function
+	 *
+	 * @return 		mixed
+	 */
+	public static function wrap_call_user_func_array($c, $m, $p) 
+	{
+		switch(count($p)) { 
+			case 0: $result = $c->{$m}(); break; 
+			case 1: $result = $c->{$m}($p[0]); break; 
+			case 2: $result = $c->{$m}($p[0], $p[1]); break; 
+			case 3: $result = $c->{$m}($p[0], $p[1], $p[2]); break; 
+			case 4: $result = $c->{$m}($p[0], $p[1], $p[2], $p[3]); break; 
+			case 5: $result = $c->{$m}($p[0], $p[1], $p[2], $p[3], $p[4]); break; 
+			case 6: $result = $c->{$m}($p[0], $p[1], $p[2], $p[3], $p[4], $p[5]); break;
+			case 7: $result = $c->{$m}($p[0], $p[1], $p[2], $p[3], $p[4], $p[5], $p[6]); break;
+			case 8: $result = $c->{$m}($p[0], $p[1], $p[2], $p[3], $p[4], $p[5], $p[6], $p[7]); break;
+			case 9: $result = $c->{$m}($p[0], $p[1], $p[2], $p[3], $p[4], $p[5], $p[6], $p[7], $p[8]); break;
+			case 10: $result = $c->{$m}($p[0], $p[1], $p[2], $p[3], $p[4], $p[5], $p[6], $p[7], $p[8], $p[9]); break;
+			default: call_user_func_array(array($c, $m), $p);  break; 
+		} 
+		
+		return $result;
+	}
+	
 }
