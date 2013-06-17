@@ -89,7 +89,7 @@ class Infusionsoft {
 			case 8: $result = $c->{$m}($p[0], $p[1], $p[2], $p[3], $p[4], $p[5], $p[6], $p[7]); break;
 			case 9: $result = $c->{$m}($p[0], $p[1], $p[2], $p[3], $p[4], $p[5], $p[6], $p[7], $p[8]); break;
 			case 10: $result = $c->{$m}($p[0], $p[1], $p[2], $p[3], $p[4], $p[5], $p[6], $p[7], $p[8], $p[9]); break;
-			default: call_user_func_array(array($c, $m), $p);  break; 
+			default: $result = call_user_func_array(array($c, $m), $p);  break; 
 		} 
 		
 		return $result;
