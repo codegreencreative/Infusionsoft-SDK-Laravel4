@@ -35,7 +35,9 @@
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
 // OF THE POSSIBILITY OF SUCH DAMAGE.
 
-$GLOBALS['xmlrpcName'] = 'Infusionsoft PHP iSDK 1.29.x ' . $_SERVER['SERVER_NAME'] . $_SERVER['PHP_SELF'];
+$GLOBALS['xmlrpcName'] = 'Infusionsoft PHP iSDK 1.29.x '
+. (array_key_exists('SERVER_NAME', $_SERVER) ? $_SERVER['SERVER_NAME'] : htmlentities(php_uname('n')))
+. $_SERVER['PHP_SELF'];
 $GLOBALS['xmlrpcVersion'] = '3.0.0.beta';
 
 if (!function_exists('xml_parser_create')) {
